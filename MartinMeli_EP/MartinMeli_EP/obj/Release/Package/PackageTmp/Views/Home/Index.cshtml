@@ -1,0 +1,233 @@
+﻿@using MartinMeli_EP.Models
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            @{
+                int i = 0;
+                foreach (var article in ViewBag.Recent)
+                {
+                    try
+                    {
+                        if (article.headline != null)
+                        {
+                            if (i == 0)
+                            {
+                                <div class="item active">
+                                    <a href="/Journal/View/@article.articleId">
+                                        <img src="@article.imageURL" alt="Slide @i">
+                                        <div class="carousel-caption">
+                                            <h3>@article.headline</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <a href="/Journal/View/@article.articleId">
+                                        <img src="@article.imageURL" alt="Slide @i">
+                                        <div class="carousel-caption">
+                                            <h3>@article.headline</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    }
+                    catch { }
+
+
+                    i++;
+                }
+            }
+        </div>
+        <a class="left carousel-control" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+}
+<h3>News</h3>
+<div class="col-lg-12">
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">National</h3>
+            </div>
+            @{
+                int a = 0;
+                foreach (var article in ViewBag.RecentNational)
+                {
+                    if (article.categoryId == 1)
+                    {
+                        if (a == 0)
+                        {
+                            <div class="panel-body">
+                                <b>@article.headline</b>
+                            </div>
+                            <img src="@article.imageURL" width="250" height="250" />
+                        }
+                        else
+                        {
+                            <p> @article.headline </p>
+                        }
+                        a++;
+                    }
+                }
+            }
+            
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Overseas</h3>
+            </div>
+            @{
+                a = 0;
+                foreach (var article in ViewBag.RecentOverseas)
+                {
+                    if (article.categoryId == 2)
+                    {
+                        if (a == 0)
+                        {
+                            <div class="panel-body">
+                                <b>@article.headline</b>
+                            </div>
+                            <img src="@article.imageURL" width="250" height="250" />
+                        }
+                        else
+                        {
+                            <p> @article.headline </p>
+                        }
+                        a++;
+                    }
+                }
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sports</h3>
+            </div>
+            @{
+                a = 0;
+                foreach (var article in ViewBag.RecentSports)
+                {
+                    if (article.categoryId == 3)
+                    {
+                        if (a == 0)
+                        {
+                            <div class="panel-body">
+                                <b>@article.headline</b>
+                            </div>
+                            <img src="@article.imageURL" width="250" height="250" />
+                        }
+                        else
+                        {
+                            <p> @article.headline </p>
+                        }
+                        a++;
+                    }
+                }
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Opinion</h3>
+            </div>
+            @{
+                a = 0;
+                foreach (var article in ViewBag.RecentOpinion)
+                {
+                    if (article.categoryId == 6)
+                    {
+                        if (a == 0)
+                        {
+                            <div class="panel-body">
+                                <b>@article.headline</b>
+                            </div>
+                            <img src="@article.imageURL" width="250" height="250" />
+                        }
+                        else
+                        {
+                            <p>@article.headline</p>
+                        }
+                        a++;
+                    }
+                }
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Travel</h3>
+            </div>
+            @{
+                a = 0;
+                foreach (var article in ViewBag.RecentTravel)
+                {
+                    if (article.categoryId == 5)
+                    {
+                        if (a == 0)
+                        {
+                            <div class="panel-body">
+                                <b>@article.headline</b>
+                            </div>
+                            <img src="@article.imageURL" width="250" height="250" />
+                        }
+                        else
+                        {
+                            <p>@article.headline</p>
+                        }
+                        a++;
+                    }
+                }
+            }
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            @{
+                a = 0;
+                foreach (var article in ViewBag.RecentOdd)
+                {
+                    if (article.categoryId == 4)
+                    {
+                        if (a == 0)
+                        {
+                            <div class="panel-body">
+                                <b>@article.headline</b>
+                            </div>
+                            <img src="@article.imageURL" width="250" height="250" />
+                        }
+                        else
+                        {
+                            <p>@article.headline</p>
+                        }
+                        a++;
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

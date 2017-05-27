@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="martinmeli_epModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="martinmeli_epEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="articles" EntityType="martinmeli_epModel.article" />
+    <EntitySet Name="categories" EntityType="martinmeli_epModel.category" />
+    <EntitySet Name="journalists" EntityType="martinmeli_epModel.journalist" />
+    <AssociationSet Name="FK__article__authorI__276EDEB3" Association="martinmeli_epModel.FK__article__authorI__276EDEB3">
+      <End Role="journalist" EntitySet="journalists" />
+      <End Role="article" EntitySet="articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__article__categor__286302EC" Association="martinmeli_epModel.FK__article__categor__286302EC">
+      <End Role="category" EntitySet="categories" />
+      <End Role="article" EntitySet="articles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="article">
+    <Key>
+      <PropertyRef Name="articleId" />
+    </Key>
+    <Property Name="articleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="headline" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="imageURL" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="authorId" Type="Int32" Nullable="false" />
+    <Property Name="categoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="journalist" Relationship="martinmeli_epModel.FK__article__authorI__276EDEB3" FromRole="article" ToRole="journalist" />
+    <NavigationProperty Name="category" Relationship="martinmeli_epModel.FK__article__categor__286302EC" FromRole="article" ToRole="category" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="category1" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="articles" Relationship="martinmeli_epModel.FK__article__categor__286302EC" FromRole="category" ToRole="article" />
+  </EntityType>
+  <EntityType Name="journalist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="surname" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="about" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="articles" Relationship="martinmeli_epModel.FK__article__authorI__276EDEB3" FromRole="journalist" ToRole="article" />
+  </EntityType>
+  <Association Name="FK__article__authorI__276EDEB3">
+    <End Type="martinmeli_epModel.journalist" Role="journalist" Multiplicity="1" />
+    <End Type="martinmeli_epModel.article" Role="article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="journalist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="article">
+        <PropertyRef Name="authorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__article__categor__286302EC">
+    <End Type="martinmeli_epModel.category" Role="category" Multiplicity="1" />
+    <End Type="martinmeli_epModel.article" Role="article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="article">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

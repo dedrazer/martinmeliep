@@ -1,0 +1,75 @@
+﻿@using MartinMeli_EP.Models
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <div class="float-left"><img src="~/Content/Images/news.jpg" width="60"></div>
+                        @Html.ActionLink("meli news", "Index", "Home")
+                    </div>
+                    <div class="collapse navbar-collapse" >
+                        <ul class="nav navbar-nav">
+                            <li>Opinion News</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("National", "National", "Category")</li>
+                                    <li>@Html.ActionLink("Overseas", "Overseas", "Category")</li>
+                                    <li>@Html.ActionLink("Sports", "Sports", "Category")</li>
+                                    <li>@Html.ActionLink("Opinion", "Opinion", "Category")</li>
+                                    <li>@Html.ActionLink("Travel", "Travel", "Category")</li>
+                                    <li>@Html.ActionLink("Odd", "Odd", "Category")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            @if (Logic.AccountLogic.loggedIn)
+                            {
+                                <li>@Html.ActionLink("New Journal", "Index", "Journal")</li>
+                                <li>@Html.ActionLink("My Journals", "Journalist", "Journal")</li>
+                                <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                                <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            }
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div id="body" class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Opinion</h3>
+            </div>
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - meli news</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+       
+    </body>
+</html>

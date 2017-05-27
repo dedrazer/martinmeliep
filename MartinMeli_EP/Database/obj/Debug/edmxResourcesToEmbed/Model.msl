@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="martinmeli_epModelStoreContainer" CdmEntityContainer="martinmeli_epEntities">
+    <EntitySetMapping Name="articles">
+      <EntityTypeMapping TypeName="martinmeli_epModel.article">
+        <MappingFragment StoreEntitySet="article">
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="authorId" ColumnName="authorId" />
+          <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="headline" ColumnName="headline" />
+          <ScalarProperty Name="articleId" ColumnName="articleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="martinmeli_epModel.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="category1" ColumnName="category" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="journalists">
+      <EntityTypeMapping TypeName="martinmeli_epModel.journalist">
+        <MappingFragment StoreEntitySet="journalist">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="about" ColumnName="about" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

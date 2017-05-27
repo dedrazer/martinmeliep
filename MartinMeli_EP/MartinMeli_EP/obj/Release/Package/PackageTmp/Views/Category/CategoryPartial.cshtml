@@ -1,0 +1,12 @@
+﻿@model Data.article
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Html.ActionLink((string)Model.headline, "View/" + (string)Model.articleId.ToString(), "Journal")</h3>
+    </div>
+    <img src="@Model.imageURL" width="250" height="250" />
+    <div class="panel-body">
+        <b>@Model.description</b>
+    </div>
+    <i>@Model.journalist.surname @Model.journalist.name</i>
+</div>

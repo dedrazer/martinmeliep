@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="martinmeli_epModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="article">
+    <Key>
+      <PropertyRef Name="articleId" />
+    </Key>
+    <Property Name="articleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="headline" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="imageURL" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="authorId" Type="Int32" Nullable="false" />
+    <Property Name="categoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="journalist" Relationship="Self.FK__article__authorI__3A81B327" FromRole="article" ToRole="journalist" />
+    <NavigationProperty Name="category" Relationship="Self.FK__article__categor__3B75D760" FromRole="article" ToRole="category" />
+    <Property Name="subheading" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="category1" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="articles" Relationship="Self.FK__article__categor__3B75D760" FromRole="category" ToRole="article" />
+  </EntityType>
+  <EntityType Name="journalist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="surname" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="about" Type="String" MaxLength="512" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="articles" Relationship="Self.FK__article__authorI__3A81B327" FromRole="journalist" ToRole="article" />
+  </EntityType>
+  <Association Name="FK__article__authorI__3A81B327">
+    <End Role="journalist" Type="Self.journalist" Multiplicity="1" />
+    <End Role="article" Type="Self.article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="journalist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="article">
+        <PropertyRef Name="authorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__article__categor__3B75D760">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="article" Type="Self.article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="article">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="martinmeli_epEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="articles" EntityType="Self.article" />
+    <EntitySet Name="categories" EntityType="Self.category" />
+    <EntitySet Name="journalists" EntityType="Self.journalist" />
+    <AssociationSet Name="FK__article__authorI__3A81B327" Association="Self.FK__article__authorI__3A81B327">
+      <End Role="journalist" EntitySet="journalists" />
+      <End Role="article" EntitySet="articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__article__categor__3B75D760" Association="Self.FK__article__categor__3B75D760">
+      <End Role="category" EntitySet="categories" />
+      <End Role="article" EntitySet="articles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

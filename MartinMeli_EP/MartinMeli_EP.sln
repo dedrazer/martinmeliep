@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartinMeli_EP", "MartinMeli_EP\MartinMeli_EP.csproj", "{F311E4AB-AB05-432B-9E52-EACAF91BF421}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Database\Data.csproj", "{0B5B2000-B7FE-4267-AE3A-498F968458AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{462D94CC-98E9-4434-8C8F-6A2309EE08EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F311E4AB-AB05-432B-9E52-EACAF91BF421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F311E4AB-AB05-432B-9E52-EACAF91BF421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F311E4AB-AB05-432B-9E52-EACAF91BF421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F311E4AB-AB05-432B-9E52-EACAF91BF421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B5B2000-B7FE-4267-AE3A-498F968458AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B5B2000-B7FE-4267-AE3A-498F968458AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B5B2000-B7FE-4267-AE3A-498F968458AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B5B2000-B7FE-4267-AE3A-498F968458AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{462D94CC-98E9-4434-8C8F-6A2309EE08EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{462D94CC-98E9-4434-8C8F-6A2309EE08EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{462D94CC-98E9-4434-8C8F-6A2309EE08EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{462D94CC-98E9-4434-8C8F-6A2309EE08EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

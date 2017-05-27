@@ -1,0 +1,51 @@
+﻿@model MartinMeli_EP.Models.RegisterModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Create a new journalist account.</legend>
+        @Html.LabelFor(m => m.UserName)
+        <br />
+        @Html.TextBoxFor(m => m.UserName)
+        <br /><br />
+        @Html.LabelFor(m => m.Password)
+        <br />
+        @Html.PasswordFor(m => m.Password)
+        <br /><br />
+        @Html.LabelFor(m => m.ConfirmPassword)
+        <br />
+        @Html.PasswordFor(m => m.ConfirmPassword)
+        <br /><br />
+        @Html.LabelFor(m => m.Name)
+        <br />
+        @Html.TextBoxFor(m => m.Name)
+        <br /><br />
+        @Html.LabelFor(m => m.Surname)
+        <br />
+        @Html.TextBoxFor(m => m.Surname)
+        <br /><br />
+        @Html.LabelFor(m => m.About)
+        <br />
+        @Html.TextAreaFor(m => m.About)
+        <br /><br />
+        @Html.LabelFor(m => m.Email)
+        <br />
+        <input id="Email" data-val="true" data-val-required="The Email field is required." name="Email" value="" type="email">
+        <br /><br />
+        <input type="submit" value="Update" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

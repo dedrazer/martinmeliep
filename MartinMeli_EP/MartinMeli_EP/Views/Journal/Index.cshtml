@@ -1,0 +1,64 @@
+﻿@model MartinMeli_EP.Models.ArticleModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>New Article</h2>
+
+@using (Html.BeginForm("Index", "Journal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Create your new article</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Headline)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Headline)
+            @Html.ValidationMessageFor(model => model.Headline)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Subheading)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Subheading)
+            @Html.ValidationMessageFor(model => model.Subheading)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Image)
+        </div>
+        <div class="editor-field">
+            <input id="Image" type="file" class="glyphicon-open-file" data-val="true" data-val-required="The Image field is required." name="Image" value=""/>
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+        <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryID)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CategoryID, new SelectList(MartinMeli_EP.Views.Journal.Category.Categories, "categoryId", "name"))
+        </div>
+        <br />
+        <p>
+            <input type="submit" value="Publish" />
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="melinews" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\Ass\\MartinMeli_EP\\MartinMeli_EP\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\Ass\\MartinMeli_EP\\MartinMeli_EP\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="martinmeli_epEntities-Web.config Connection String" description="" value="metadata=res://*/AzureModel.csdl|res://*/AzureModel.ssdl|res://*/AzureModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=melinewsserver.database.windows.net;Initial Catalog=martinmeli_ep;User ID=a100365;Password=Dickbutt69&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\Ass\\MartinMeli_EP\\MartinMeli_EP\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='martinmeli_epEntities']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." value="DefaultConnection_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Ass\\MartinMeli_EP\\MartinMeli_EP\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

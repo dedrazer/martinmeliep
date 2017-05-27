@@ -1,0 +1,43 @@
+﻿@{
+    var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+    var actionName = "";
+    if (routeValues != null)
+    {
+        if (routeValues.ContainsKey("action"))
+        {
+            actionName = routeValues["action"].ToString();
+        }
+    }
+
+    string layout = "";
+
+    if (actionName == "National")
+    {
+        layout = "~/Views/Shared/_nationalLayout.cshtml";
+    }
+    else if (actionName == "Odd")
+    {
+        layout = "~/Views/Shared/_oddLayout.cshtml";
+    }
+    else if (actionName == "Travel")
+    {
+        layout = "~/Views/Shared/_travelLayout.cshtml";
+    }
+    else if (actionName == "Overseas")
+    {
+        layout = "~/Views/Shared/_overseasLayout.cshtml";
+    }
+    else if (actionName == "Opinion")
+    {
+        layout = "~/Views/Shared/_opinionLayout.cshtml";
+    }
+    else if (actionName == "Sports")
+    {
+        layout = "~/Views/Shared/_sportsLayout.cshtml";
+    }
+    else
+    {
+        layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    Layout = layout;
+}

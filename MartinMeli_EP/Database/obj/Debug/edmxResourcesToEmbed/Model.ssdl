@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="martinmeli_epModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="article">
+    <Key>
+      <PropertyRef Name="articleId" />
+    </Key>
+    <Property Name="articleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="headline" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="imageURL" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="authorId" Type="int" Nullable="false" />
+    <Property Name="categoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="category" Type="nvarchar" MaxLength="16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="journalist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="about" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__article__authorI__276EDEB3">
+    <End Role="journalist" Type="Self.journalist" Multiplicity="1" />
+    <End Role="article" Type="Self.article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="journalist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="article">
+        <PropertyRef Name="authorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__article__categor__286302EC">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="article" Type="Self.article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="article">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="martinmeli_epModelStoreContainer">
+    <EntitySet Name="article" EntityType="Self.article" Schema="meliNews" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="meliNews" store:Type="Tables" />
+    <EntitySet Name="journalist" EntityType="Self.journalist" Schema="meliNews" store:Type="Tables" />
+    <AssociationSet Name="FK__article__authorI__276EDEB3" Association="Self.FK__article__authorI__276EDEB3">
+      <End Role="journalist" EntitySet="journalist" />
+      <End Role="article" EntitySet="article" />
+    </AssociationSet>
+    <AssociationSet Name="FK__article__categor__286302EC" Association="Self.FK__article__categor__286302EC">
+      <End Role="category" EntitySet="category" />
+      <End Role="article" EntitySet="article" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

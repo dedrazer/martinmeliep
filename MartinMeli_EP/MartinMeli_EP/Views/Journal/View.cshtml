@@ -1,0 +1,26 @@
+﻿@using MartinMeli_EP.Models
+
+@{
+    ViewBag.Title = "View";
+}
+
+@{
+    var article = (ArticleModel)ViewData["article"];
+    var journalist = (JournalistModel)ViewData["journalist"];
+}
+
+
+<div class="col-lg-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">@article.Headline</h3>
+        </div>
+        <img src="@article.ImageURL" width="250" height="250" />
+        <div class="panel-body">
+            <b>@article.Subheading</b>
+            <p>@article.Description</p>
+        </div>
+        <i>@Html.ActionLink((string)journalist.Name + " " + (string)journalist.Surname, (string)article.AuthorID.ToString(), "Author")</i>
+        <p>Category: @Html.ActionLink(article.Category, article.Category, "Category")</p>
+    </div>
+</div>

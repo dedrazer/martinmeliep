@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Journalists";
+}
+
+<h2>Journalists</h2>
+
+<table>
+    @foreach (var j in ViewBag.Journalists)
+    {
+        <tr>
+            <td>@Html.ActionLink((string)j.username, (string)j.id.ToString(), "Author")</td><td>@Html.ActionLink("Edit", "Edit/" + (string)j.id.ToString(), "Account")</td><td>@Html.ActionLink("Delete", "Delete/" + (string)j.id.ToString(), "Account")</td>
+        </tr>
+    }
+</table>
